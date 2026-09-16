@@ -1,62 +1,31 @@
-# Fake Online Review Analyzer with Trust Score
+# ReviewLens — Fake Online Review Analyzer
 
-A comprehensive system designed to evaluate the reliability of product reviews from e-commerce platforms using advanced NLP and behavioral analysis.
+Open `index.html` in a browser to run the MVP. No build step is required.
 
-## Features
+## Run the trained model API
 
-- **Trust Score Generation**: Analyzes reviews and generates a reliability score
-- **Review Classification**: Categorizes reviews as genuine, suspicious, or fake
-- **Pattern Detection**: Identifies repetitive content and unusual review patterns
-- **Time-Based Analysis**: Detects sudden bursts of reviews indicating spam/coordinated activity
-- **Review Fingerprinting**: Identifies duplicate or templated reviews
-- **URL Analysis**: Extracts and analyzes reviews directly from product URLs
-- **Manual Review Input**: Accepts manually entered review text for analysis
+From this project folder, start the local prediction service:
 
-## Tech Stack
-
-- **Frontend**: React.js
-- **Backend**: Node.js, Express.js
-- **ML/NLP**: Python (scikit-learn, spaCy, NLTK)
-- **Database**: MongoDB
-- **APIs**: RESTful API architecture
-
-## Project Structure
-
-```
-fake_review/
-├── frontend/           # React application
-├── backend/            # Node.js/Express server
-├── ml-service/         # Python ML/NLP service
-├── docs/               # Documentation
-└── README.md
+```powershell
+& "C:\Users\Anjali\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" api_server.py
 ```
 
-## Getting Started
+Then refresh `index.html`. Manual review analysis calls `http://127.0.0.1:8765/api/analyze-review`; if the API is offline, the browser uses its local fallback.
 
-### Prerequisites
-- Node.js 16+
-- Python 3.8+
-- MongoDB 4.4+
-- npm or yarn
+## What is included
 
-### Installation
+- Manual review analysis using explainable NLP-style signals: sentiment, exaggerated language, review detail, capitalization, calls to action, and punctuation intensity.
+- Trust score from 0–100 with three outcomes: likely genuine, suspicious, or likely fake.
+- Product URL analysis dashboard with review-level breakdown. It uses sample reviews in this browser-only prototype.
 
-1. Clone the repository
-2. Install backend dependencies: `cd backend && npm install`
-3. Install frontend dependencies: `cd frontend && npm install`
-4. Install ML service dependencies: `cd ml-service && pip install -r requirements.txt`
+## Important reliability note
 
-### Running the Application
+This is a screening tool, not a ground-truth detector. A production version should train and validate a calibrated model on a labeled, domain-specific dataset, show confidence intervals, avoid claiming intent, and keep a human-review path.
 
-1. Start MongoDB
-2. Run the backend: `cd backend && npm start`
-3. Run the ML service: `cd ml-service && python app.py`
-4. Run the frontend: `cd frontend && npm start`
+The URL flow must be moved to a backend connector/API. Browser JavaScript cannot reliably fetch reviews from arbitrary marketplaces because of CORS, authentication, robots rules, and site-specific markup. The backend should normalize reviews, timestamps, ratings, reviewer metadata (where permitted), and product identifiers before calling the scoring service.
 
-## API Documentation
+## Recommended production architecture
 
-See `docs/API.md` for detailed API documentation.
+`Frontend → API → review connector → feature pipeline → ML/NLP model → calibrated score + evidence`
 
-## License
-
-MIT
+Recommended model stages are a language model/text classifier, duplicate/near-duplicate detection, burst/timing analysis, reviewer/product graph features, and calibration against a held-out test set. Measure precision/recall by marketplace and language, with a false-positive budget.

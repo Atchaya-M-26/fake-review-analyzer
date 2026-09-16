@@ -1,0 +1,57 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "AeroBreeze Smart Desk Fan",
+      "category": "Home appliances",
+      "reviews": [
+        {"text":"I bought this fan for my study room and have used it every evening for three weeks. It is quiet on speed one, the timer is useful, and the front grill is easy to remove for cleaning.","rating":4,"date":"2026-07-18","reviewer":"reviewer-101"},
+        {"text":"Absolutely amazing!!! Best fan ever!!! You MUST buy this right now, it changed my life completely. Five stars!!!","rating":5,"date":"2026-07-19","reviewer":"reviewer-102"},
+        {"text":"The fan works well and the airflow is strong. The buttons feel a little cheap, but it cools my desk area and the cable is long enough.","rating":4,"date":"2026-07-24","reviewer":"reviewer-103"},
+        {"text":"Perfect perfect perfect best product buy now five stars amazing!!!","rating":5,"date":"2026-07-24","reviewer":"reviewer-104"},
+        {"text":"It is normal fan not high speed. The noise is acceptable and the price was reasonable for a small desk fan.","rating":3,"date":"2026-08-01","reviewer":"reviewer-105"}
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Northstar Stainless Travel Mug",
+      "category": "Kitchen",
+      "reviews": [
+        {"text":"I tested the mug on a two-hour commute. Coffee stayed warm, the lid did not leak in my bag, and it fits the cup holder in my car. The outside gets slightly warm.","rating":4,"date":"2026-07-12","reviewer":"reviewer-201"},
+        {"text":"Nice product low cost","rating":4,"date":"2026-07-13","reviewer":"reviewer-202"},
+        {"text":"After a week the seal started coming loose and the lid is difficult to clean. It keeps drinks warm, but I would prefer a simpler lid design.","rating":3,"date":"2026-07-21","reviewer":"reviewer-203"},
+        {"text":"Best mug ever!!! Must buy this amazing item!!!","rating":5,"date":"2026-07-21","reviewer":"reviewer-204"}
+      ]
+    }
+    ,{
+      "id": "3",
+      "title": "LumaGlow Reading Lamp",
+      "category": "Lighting",
+      "reviews": [
+        {"text":"The lamp has been on my bedside table for a month. The warm setting is comfortable for reading, the arm stays in position, and the base does not slide around.","rating":5,"date":"2026-07-08","reviewer":"reviewer-301"},
+        {"text":"Good light for reading. The cable could be longer but it works as expected and the brightness adjustment is smooth.","rating":4,"date":"2026-07-16","reviewer":"reviewer-302"},
+        {"text":"Amazing perfect lamp!!! Best ever must buy now!!!","rating":5,"date":"2026-07-16","reviewer":"reviewer-303"}
+      ]
+    },
+    {
+      "id": "4",
+      "title": "PulseFit Wireless Earbuds",
+      "category": "Electronics",
+      "reviews": [
+        {"text":"The earbuds paired quickly with my phone and lasted around six hours on one charge. Calls are clear indoors, although the fit becomes loose while running.","rating":4,"date":"2026-06-29","reviewer":"reviewer-401"},
+        {"text":"The case is compact and charging is quick. Bass is not very strong, but podcasts and calls sound clear for the price.","rating":4,"date":"2026-07-04","reviewer":"reviewer-402"},
+        {"text":"Absolutely incredible!!! Five stars!!! You need this product right now!!!","rating":5,"date":"2026-07-04","reviewer":"reviewer-403"}
+      ]
+    },
+    {
+      "id": "5",
+      "title": "TerraSteel Insulated Bottle",
+      "category": "Outdoor",
+      "reviews": [
+        {"text":"I carried this bottle on a day hike and the water was still cool after several hours. The cap is easy to grip and there was no leaking in my backpack.","rating":5,"date":"2026-06-20","reviewer":"reviewer-501"},
+        {"text":"Solid bottle with a useful wide mouth. It is heavier than a plastic bottle, but that is expected with stainless steel.","rating":4,"date":"2026-06-25","reviewer":"reviewer-502"},
+        {"text":"Best bottle ever buy this now amazing quality five stars","rating":5,"date":"2026-06-25","reviewer":"reviewer-503"}
+      ]
+    }
+  ]
+}

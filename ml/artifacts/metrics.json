@@ -1,0 +1,22 @@
+{
+  "dataset": "new_data_train.csv / new_data_test.csv",
+  "task": "binary flagged-risk classification",
+  "train_rows": 9929,
+  "test_rows": 2483,
+  "features": 4096,
+  "accuracy": 0.6146,
+  "precision_flagged": 0.6328,
+  "recall_flagged": 0.5885,
+  "f1_flagged": 0.6099,
+  "confusion_matrix_labels_0_1": [
+    [
+      778,
+      434
+    ],
+    [
+      523,
+      748
+    ]
+  ],
+  "note": "Dependency-light binary baseline trained on Yelp-style data; not validated for Amazon product reviews."
+}
