@@ -1,8 +1,86 @@
-(function(){
-  const style=document.createElement('style');
-  style.textContent='.review-dashboard{padding-top:28px}.review-dashboard .dashboard-hero{margin-bottom:24px}.review-dashboard .dashboard-hero h1{font-size:42px;letter-spacing:-2px;margin:10px 0}.dashboard-top-actions{display:flex;gap:9px}.dashboard-action{border:0;border-radius:8px;padding:12px 15px;background:#152321;color:#fff;font-weight:700;cursor:pointer}.dashboard-action.secondary{background:#fff;color:#147d61;border:1px solid #cfe6dc}.dashboard-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}.dashboard-kpi{background:#fff;border:1px solid #e7dfea;border-radius:12px;padding:17px;box-shadow:0 10px 25px #76538f0f}.dashboard-kpi .kpi-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:18px;margin-bottom:14px}.kpi-total .kpi-icon{background:#eee4ff;color:#7544c9}.kpi-genuine .kpi-icon{background:#dcf7e9;color:#16845d}.kpi-suspicious .kpi-icon{background:#fff0d8;color:#d4862d}.kpi-fake .kpi-icon{background:#ffe2e2;color:#d35c5c}.kpi-score .kpi-icon{background:#dfeeff;color:#3479cc}.dashboard-kpi span{display:block;color:#7d8b86;font-size:11px}.dashboard-kpi strong{display:block;font:600 25px "Space Grotesk";margin:5px 0}.kpi-foot{font-size:10px!important;color:#9ba7a3!important}.dashboard-columns{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:16px}.dashboard-main-panels{display:grid;grid-template-columns:1fr 1fr;gap:16px}.dashboard-panel{background:#fff;border:1px solid #e7dfea;border-radius:12px;padding:19px;box-shadow:0 10px 25px #76538f0d;min-width:0}.dashboard-panel.wide,.history-dashboard{grid-column:1/-1}.dashboard-panel h3,.table-heading h2{font:600 15px "Space Grotesk";margin:0 0 4px}.panel-subtitle{font-size:11px;color:#8c9994;margin-bottom:18px}.bar-chart{display:flex;align-items:end;height:145px;gap:14px;border-bottom:1px solid #e7ece9;padding:0 6px}.chart-bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px}.chart-bar i{display:block;width:100%;max-width:35px;background:linear-gradient(180deg,#9a72e0,#6a40bd);border-radius:6px 6px 0 0;min-height:5px}.chart-bar strong{font-size:11px}.chart-bar small{font-size:9px;color:#87938e;white-space:nowrap}.distribution{display:grid;gap:12px;margin-top:14px}.distribution-row{display:grid;grid-template-columns:80px 1fr 30px;gap:8px;align-items:center;font-size:11px}.distribution-row .track{height:9px;background:#eef2ef;border-radius:20px;overflow:hidden}.distribution-row .track i{display:block;height:100%;border-radius:20px}.genuine-fill{background:#35ae7a}.suspicious-fill{background:#f1ad45}.fake-fill{background:#e96767}.insight-list{display:grid;gap:10px}.insight{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:8px;background:#faf8fc;font-size:11px;color:#667570;line-height:1.4}.insight b{display:block;color:#1d2d28;margin-bottom:2px}.insight-icon{font-size:17px}.dashboard-side{display:grid;gap:16px;align-content:start}.side-action-card{background:linear-gradient(145deg,#f4eaff,#e7f8ef);border:1px solid #e1d9ed;border-radius:12px;padding:20px}.side-action-card h3{font:600 17px "Space Grotesk";margin:8px 0}.side-action-card p{font-size:12px;color:#717980;line-height:1.45}.side-action-card button{width:100%;border:0;border-radius:7px;background:#152321;color:#fff;padding:11px;font-weight:700;cursor:pointer}.dashboard-footer-note{margin-top:16px;color:#89958f;font-size:10px;display:flex;justify-content:space-between}.review-dashboard .history-item{cursor:pointer}.review-dashboard .history-item:hover{background:#fbf8ff}@media(max-width:1000px){.dashboard-kpis{grid-template-columns:repeat(3,1fr)}.dashboard-columns{grid-template-columns:1fr}.dashboard-side{grid-template-columns:1fr 1fr}}@media(max-width:650px){.dashboard-kpis,.dashboard-main-panels,.dashboard-side{grid-template-columns:1fr}.review-dashboard .dashboard-hero{display:block}.dashboard-top-actions{margin-top:15px}.dashboard-panel.wide,.history-dashboard{grid-column:auto}}';
+(function () {
+  const $ = id => document.getElementById(id);
+  const esc = value => String(value ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
+  const style = document.createElement('style');
+  style.textContent = '.reports-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.report-card{background:#fff;border:1px solid #e7dfea;border-radius:12px;padding:20px;text-align:left;cursor:pointer;box-shadow:0 10px 25px #76538f0d}.report-card:hover{border-color:#8ecfb4;transform:translateY(-1px)}.report-card h2{font:600 18px "Space Grotesk";margin:10px 0 6px}.report-card p{color:#7d8b86;font-size:12px}.report-score{font:600 30px "Space Grotesk";margin:18px 0 8px;color:#167b5b}.report-score small{font:11px "DM Sans";color:#89958f;margin-left:5px}.report-time{display:block;color:#89958f;margin-top:14px}@media(max-width:700px){.reports-grid{grid-template-columns:1fr}}.sentiment-chart .sentiment-0{background:linear-gradient(180deg,#59c895,#16845d)}.sentiment-chart .sentiment-1{background:linear-gradient(180deg,#a681e3,#7044bf)}.sentiment-chart .sentiment-2{background:linear-gradient(180deg,#ef9696,#d35c5c)}';
   document.head.appendChild(style);
-  const $=id=>document.getElementById(id);
-  window.renderDashboard=function(){const h=JSON.parse(localStorage.getItem('reviewlens_history')||'[]'),c={g:h.filter(x=>x.label==='Likely genuine').length,s:h.filter(x=>x.label==='Suspicious').length,f:h.filter(x=>x.label==='Likely fake').length},total=h.length,avg=total?Math.round(h.reduce((a,x)=>a+Number(x.score||0),0)/total):0,urls=h.filter(x=>x.type==='Product').length,bands=[0,0,0,0,0];h.forEach(x=>bands[Math.min(4,Math.floor(Number(x.score||0)/20))]++);const pc=n=>total?Math.round(n/total*100):0;$('dashboardView').innerHTML='<div class="review-dashboard"><div class="dashboard-hero"><div><span class="pill">REVIEWLENS OVERVIEW</span><h1>Your trust intelligence.</h1><p>Understand the reviews you have analyzed, the signals detected, and where attention is needed.</p></div><div class="dashboard-top-actions"><button class="dashboard-action secondary" id="dashboardNewReview">＋ New review</button><button class="dashboard-action" id="dashboardScanUrl">Scan product URL →</button></div></div><div class="dashboard-kpis"><div class="dashboard-kpi kpi-total"><div class="kpi-icon">◉</div><span>Total analyses</span><strong>'+total+'</strong><span class="kpi-foot">Reviews and product scans</span></div><div class="dashboard-kpi kpi-genuine"><div class="kpi-icon">✓</div><span>Likely genuine</span><strong>'+c.g+'</strong><span class="kpi-foot">'+pc(c.g)+'% of analyses</span></div><div class="dashboard-kpi kpi-suspicious"><div class="kpi-icon">!</div><span>Suspicious</span><strong>'+c.s+'</strong><span class="kpi-foot">Needs closer attention</span></div><div class="dashboard-kpi kpi-fake"><div class="kpi-icon">×</div><span>Likely fake</span><strong>'+c.f+'</strong><span class="kpi-foot">High-risk patterns</span></div><div class="dashboard-kpi kpi-score"><div class="kpi-icon">✦</div><span>Average trust score</span><strong>'+(total?avg:'—')+(total?'/100':'')+'</strong><span class="kpi-foot">Across saved analyses</span></div></div><div class="dashboard-columns"><div class="dashboard-main-panels"><div class="dashboard-panel"><h3>Trust score distribution</h3><div class="panel-subtitle">How your analyzed reviews are scoring</div><div class="bar-chart">'+bands.map((n,i)=>'<div class="chart-bar"><strong>'+n+'</strong><i style="height:'+Math.max(5,n/Math.max(1,...bands)*105)+'px"></i><small>'+i*20+'–'+(i===4?100:i*20+19)+'</small></div>').join('')+'</div></div><div class="dashboard-panel"><h3>Review classification</h3><div class="panel-subtitle">Detected risk categories in your history</div><div class="distribution"><div class="distribution-row"><span>Genuine</span><div class="track"><i class="genuine-fill" style="width:'+pc(c.g)+'%"></i></div><b>'+c.g+'</b></div><div class="distribution-row"><span>Suspicious</span><div class="track"><i class="suspicious-fill" style="width:'+pc(c.s)+'%"></i></div><b>'+c.s+'</b></div><div class="distribution-row"><span>Fake</span><div class="track"><i class="fake-fill" style="width:'+pc(c.f)+'%"></i></div><b>'+c.f+'</b></div></div></div><div class="dashboard-panel wide"><h3>Signals and next steps</h3><div class="panel-subtitle">A quick read of what ReviewLens has found so far</div><div class="insight-list"><div class="insight"><span class="insight-icon">✦</span><div><b>'+(total?(c.f>c.g?'More analyses are being flagged than cleared.':'Your saved analyses are trending toward higher trust scores.'):'Run your first review analysis to start building your trust history.')+'</b>Every result is a screening signal, not proof of reviewer intent.</div></div><div class="insight"><span class="insight-icon">↗</span><div><b>'+urls+' product-level scans</b>URL scans are grouped separately so you can compare product-level and single-review activity.</div></div></div></div><div class="dashboard-panel history-dashboard"><div class="table-heading"><div><span class="card-kicker">SAVED ANALYSES</span><h2>Recent review activity</h2></div><button class="ghost" id="clearHistory">Clear history</button></div><div id="historyList"></div></div></div><aside class="dashboard-side"><div class="side-action-card"><span class="pill">ANALYSIS TOOLKIT</span><h3>Have another review?</h3><p>Paste a new review to receive a trust score and explanation.</p><button id="dashboardSideNew">＋ Start analysis</button></div><div class="dashboard-panel"><h3>How to read your score</h3><div class="insight-list"><div class="insight"><span class="insight-icon">✓</span><div><b>68–100 · Likely genuine</b>Natural, detailed signals.</div></div><div class="insight"><span class="insight-icon">!</span><div><b>42–67 · Suspicious</b>Review needs context.</div></div><div class="insight"><span class="insight-icon">×</span><div><b>0–41 · Likely fake</b>High-risk patterns.</div></div></div></div></aside></div><div class="dashboard-footer-note"><span>REVIEWLENS / TRUST INTELLIGENCE</span><span>Based on your saved local history</span></div></div>';if(window.initHistoryActions)window.initHistoryActions();$('dashboardNewReview').onclick=window.newReview||(()=>{});$('dashboardSideNew').onclick=window.newReview||(()=>{});$('dashboardScanUrl').onclick=()=>showView('url');};
-setTimeout(()=>{if(document.getElementById('app')&&!document.getElementById('app').classList.contains('hidden'))window.renderDashboard();},0);
-})();
+
+  function history() {
+    return JSON.parse(localStorage.getItem('reviewlens_history') || '[]');
+  }
+
+  function sentimentOf(text) {
+    const value = String(text || '').toLowerCase();
+    const positive = ['amazing', 'excellent', 'great', 'love', 'perfect', 'best', 'good', 'comfortable', 'recommend'];
+    const negative = ['broken', 'poor', 'waste', 'bad', 'slow', 'disappointed', 'flimsy', 'issue', 'problem', 'return'];
+    const p = positive.filter(word => value.includes(word)).length;
+    const n = negative.filter(word => value.includes(word)).length;
+    return p > n ? 'Positive' : n > p ? 'Negative' : 'Mixed';
+  }
+
+  function productReports(items) {
+    return items.filter(item => item.type === 'Product' && item.report);
+  }
+
+  function addReportsView() {
+    const nav = document.querySelector('.sidebar nav');
+    if (nav && !document.querySelector('.nav-item[data-view="reports"]')) {
+      const button = document.createElement('button');
+      button.className = 'nav-item';
+      button.dataset.view = 'reports';
+      button.innerHTML = '<span>▤</span> Product reports';
+      button.onclick = () => showView('reports');
+      nav.appendChild(button);
+    }
+    if (!$('reportsView')) {
+      const view = document.createElement('section');
+      view.id = 'reportsView';
+      view.className = 'view hidden';
+      document.querySelector('.main').insertBefore(view, document.querySelector('.main footer'));
+    }
+  }
+
+  function renderReports() {
+    const reports = productReports(history());
+    $('reportsView').innerHTML = `<div class="reports-page"><div class="dashboard-hero compact"><div><span class="pill">SAVED PRODUCT REPORTS</span><h1>Product review<br><em>reports.</em></h1><p>Open a previous product scan to review its trust score, graphs, and every analyzed review.</p></div></div>${reports.length ? `<div class="reports-grid">${reports.map((item, index) => {
+      const report = item.report;
+      return `<button class="report-card" data-report-index="${index}"><span class="card-kicker">PRODUCT SCAN</span><h2>${esc(item.title || report.product.title)}</h2><p>${esc(report.product.category)} · ${report.reviewsScanned} reviews scanned</p><div class="report-score">${report.trustScore}<small>/100 trust</small></div><span class="tag ${item.label !== 'Likely genuine' ? 'suspicious' : ''}">${esc(item.label)}</span><small class="report-time">${esc(item.time || '')}</small></button>`;
+    }).join('')}</div>` : '<div class="table-card history-empty">No product reports yet. Scan a product URL and its complete report will appear here.</div>'}</div>`;
+    $('reportsView').querySelectorAll('[data-report-index]').forEach(button => {
+      button.onclick = () => {
+        const item = reports[Number(button.dataset.reportIndex)];
+        showView('url');
+        $('urlInput').value = item.text || '';
+        $('urlBtn').click();
+      };
+    });
+  }
+
+  function renderDashboard() {
+    const items = history();
+    const products = productReports(items);
+    const manual = items.filter(item => item.type === 'Review');
+    const scores = items.map(item => Number(item.score || 0));
+    const avg = scores.length ? Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length) : '—';
+    const classification = ['Likely genuine', 'Suspicious', 'Likely fake'].map(label => items.filter(item => item.label === label).length);
+    const bands = [0, 0, 0, 0, 0];
+    scores.forEach(score => bands[Math.min(4, Math.floor(score / 20))]++);
+    const allTexts = manual.map(item => item.text || '').concat(products.flatMap(item => (item.report.reviews || []).map(review => review.text)));
+    const sentiments = ['Positive', 'Mixed', 'Negative'].map(label => allTexts.filter(text => sentimentOf(text) === label).length);
+    const maxBand = Math.max(1, ...bands);
+    const maxSentiment = Math.max(1, ...sentiments);
+    const percentage = count => items.length ? Math.round(count / items.length * 100) : 0;
+
+    $('dashboardView').innerHTML = `<div class="review-dashboard"><div class="dashboard-hero"><div><span class="pill">REVIEWLENS OVERVIEW</span><h1>Your trust intelligence.</h1><p>Understand the reviews you have analyzed and compare product-level results.</p></div><div class="dashboard-top-actions"><button class="dashboard-action secondary" id="dashboardNewReview">＋ New review</button><button class="dashboard-action" id="dashboardScanUrl">Scan product URL →</button></div></div><div class="dashboard-kpis"><div class="dashboard-kpi kpi-total"><div class="kpi-icon">◉</div><span>Total analyses</span><strong>${items.length}</strong><span class="kpi-foot">Reviews and product scans</span></div><div class="dashboard-kpi kpi-genuine"><div class="kpi-icon">✓</div><span>Likely genuine</span><strong>${classification[0]}</strong><span class="kpi-foot">${percentage(classification[0])}% of analyses</span></div><div class="dashboard-kpi kpi-suspicious"><div class="kpi-icon">!</div><span>Suspicious</span><strong>${classification[1]}</strong><span class="kpi-foot">Needs closer attention</span></div><div class="dashboard-kpi kpi-fake"><div class="kpi-icon">×</div><span>Likely fake</span><strong>${classification[2]}</strong><span class="kpi-foot">High-risk patterns</span></div><div class="dashboard-kpi kpi-score"><div class="kpi-icon">✦</div><span>Average trust score</span><strong>${avg}${avg === '—' ? '' : '/100'}</strong><span class="kpi-foot">Across saved analyses</span></div></div><div class="dashboard-columns"><div class="dashboard-main-panels"><div class="dashboard-panel"><h3>Trust score distribution</h3><div class="panel-subtitle">Vertical view of analyzed scores</div><div class="bar-chart">${bands.map((count, index) => `<div class="chart-bar"><strong>${count}</strong><i style="height:${Math.max(5, count / maxBand * 105)}px"></i><small>${index * 20}–${index === 4 ? 100 : index * 20 + 19}</small></div>`).join('')}</div></div><div class="dashboard-panel"><h3>Sentiment analysis</h3><div class="panel-subtitle">Sentiment across every analyzed review</div><div class="bar-chart sentiment-chart">${sentiments.map((count, index) => `<div class="chart-bar"><strong>${count}</strong><i class="sentiment-${index}" style="height:${Math.max(5, count / maxSentiment * 105)}px"></i><small>${['Positive', 'Mixed', 'Negative'][index]}</small></div>`).join('')}</div></div><div class="dashboard-panel wide"><h3>Review classification</h3><div class="panel-subtitle">Detected risk categories in your saved analyses</div><div class="distribution"><div class="distribution-row"><span>Genuine</span><div class="track"><i class="genuine-fill" style="width:${percentage(classification[0])}%"></i></div><b>${classification[0]}</b></div><div class="distribution-row"><span>Suspicious</span><div class="track"><i class="suspicious-fill" style="width:${percentage(classification[1])}%"></i></div><b>${classification[1]}</b></div><div class="distribution-row"><span>Fake</span><div class="track"><i class="fake-fill" style="width:${percentage(classification[2])}%"></i></div><b>${classification[2]}</b></div></div></div></div><aside class="dashboard-side"><div class="side-action-card"><span class="card-kicker">ANALYSIS TOOLKIT</span><h3>Have another review?</h3><p>Paste a new review to receive a trust score and explanation.</p><button id="dashboardStartAnalysis">＋ Start analysis</button></div></aside></div></div>`;
+    $('dashboardNewReview').onclick = () => showView('single');
+    $('dashboardScanUrl').onclick = () => showView('url');
+    $('dashboardStartAnalysis').onclick = () => showView('single');
+    renderReports();
+  }
+
+  addReportsView();
+  window.renderDashboard = renderDashboard;
+  setTimeout(() => {
+    if ($('app') && !$('app').classList.contains('hidden')) renderDashboard();
+  }, 0);
+}());
