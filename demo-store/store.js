@@ -15,7 +15,7 @@
   function renderCatalog(products) {
     document.getElementById('products').innerHTML = products.map(product => `
       <article class="product-card">
-        <div class="product-art">${escapeHtml(product.title.slice(0, 1))}</div>
+        <img class="product-image" src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}">
         <p class="category">${escapeHtml(product.category)}</p>
         <h2>${escapeHtml(product.title)}</h2>
         <p>${product.reviews.length} sample reviews available for analysis.</p>
@@ -30,6 +30,7 @@
       <a class="back-link" href="/demo/">← All products</a>
       <p class="eyebrow">${escapeHtml(product.category)}</p>
       <h1>${escapeHtml(product.title)}</h1>
+      <img class="product-hero-image" src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}">
       <p class="product-note">This is a controlled demo product. Copy this URL into the Review Analyzer to scan its reviews.</p>
       <div class="review-list">${product.reviews.map((review, index) => `
         <article class="review-card">

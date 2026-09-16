@@ -4,6 +4,7 @@
       "id": "1",
       "title": "AeroBreeze Smart Desk Fan",
       "category": "Home appliances",
+      "image": "https://images.unsplash.com/photo-1594849407561-2b5b1f6c7d54?auto=format&fit=crop&w=900&q=80",
       "reviews": [
         {"text":"I bought this fan for my study room and have used it every evening for three weeks. It is quiet on speed one, the timer is useful, and the front grill is easy to remove for cleaning.","rating":4,"date":"2026-07-18","reviewer":"reviewer-101"},
         {"text":"Absolutely amazing!!! Best fan ever!!! You MUST buy this right now, it changed my life completely. Five stars!!!","rating":5,"date":"2026-07-19","reviewer":"reviewer-102"},
@@ -16,6 +17,7 @@
       "id": "2",
       "title": "Northstar Stainless Travel Mug",
       "category": "Kitchen",
+      "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=900&q=80",
       "reviews": [
         {"text":"I tested the mug on a two-hour commute. Coffee stayed warm, the lid did not leak in my bag, and it fits the cup holder in my car. The outside gets slightly warm.","rating":4,"date":"2026-07-12","reviewer":"reviewer-201"},
         {"text":"Nice product low cost","rating":4,"date":"2026-07-13","reviewer":"reviewer-202"},
@@ -27,6 +29,7 @@
       "id": "3",
       "title": "LumaGlow Reading Lamp",
       "category": "Lighting",
+      "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80",
       "reviews": [
         {"text":"The lamp has been on my bedside table for a month. The warm setting is comfortable for reading, the arm stays in position, and the base does not slide around.","rating":5,"date":"2026-07-08","reviewer":"reviewer-301"},
         {"text":"Good light for reading. The cable could be longer but it works as expected and the brightness adjustment is smooth.","rating":4,"date":"2026-07-16","reviewer":"reviewer-302"},
@@ -37,6 +40,7 @@
       "id": "4",
       "title": "PulseFit Wireless Earbuds",
       "category": "Electronics",
+      "image": "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=80",
       "reviews": [
         {"text":"The earbuds paired quickly with my phone and lasted around six hours on one charge. Calls are clear indoors, although the fit becomes loose while running.","rating":4,"date":"2026-06-29","reviewer":"reviewer-401"},
         {"text":"The case is compact and charging is quick. Bass is not very strong, but podcasts and calls sound clear for the price.","rating":4,"date":"2026-07-04","reviewer":"reviewer-402"},
@@ -47,10 +51,71 @@
       "id": "5",
       "title": "TerraSteel Insulated Bottle",
       "category": "Outdoor",
+      "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=900&q=80",
       "reviews": [
         {"text":"I carried this bottle on a day hike and the water was still cool after several hours. The cap is easy to grip and there was no leaking in my backpack.","rating":5,"date":"2026-06-20","reviewer":"reviewer-501"},
         {"text":"Solid bottle with a useful wide mouth. It is heavier than a plastic bottle, but that is expected with stainless steel.","rating":4,"date":"2026-06-25","reviewer":"reviewer-502"},
         {"text":"Best bottle ever buy this now amazing quality five stars","rating":5,"date":"2026-06-25","reviewer":"reviewer-503"}
+      ]
+    },
+    {
+      "id": "6",
+      "title": "CloudNest Memory Foam Pillow",
+      "category": "Home",
+      "image": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=900&q=80",
+      "reviews": [
+        {"text":"The pillow has a medium firmness and supported my neck comfortably after several nights. The cover unzips for washing and the foam recovered its shape within a day.","rating":4,"date":"2026-06-18","reviewer":"reviewer-601"},
+        {"text":"Very soft and comfortable. It is a little warm in summer, but the cover is easy to remove and wash.","rating":4,"date":"2026-06-22","reviewer":"reviewer-602"},
+        {"text":"Perfect pillow!!! Best sleep ever!!! Must buy this amazing product now!!!","rating":5,"date":"2026-06-22","reviewer":"reviewer-603"},
+        {"text":"The size fits my pillowcase and the support is better than a feather pillow. It took two nights to get used to the shape.","rating":4,"date":"2026-07-02","reviewer":"reviewer-604"}
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Oakline Laptop Stand",
+      "category": "Office",
+      "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80",
+      "reviews": [
+        {"text":"The wooden stand raised my laptop to a comfortable height. It feels stable with a fourteen-inch laptop, though the finish marks easily.","rating":4,"date":"2026-06-12","reviewer":"reviewer-701"},
+        {"text":"Simple stand that does what it should. Assembly took about ten minutes and the rubber feet keep it from sliding.","rating":4,"date":"2026-06-19","reviewer":"reviewer-702"},
+        {"text":"Amazing stand best ever buy now five stars!!!","rating":5,"date":"2026-06-19","reviewer":"reviewer-703"},
+        {"text":"Looks good on my desk and leaves room underneath for a keyboard. The surface is slightly narrower than expected.","rating":4,"date":"2026-06-28","reviewer":"reviewer-704"}
+      ]
+    },
+    {
+      "id": "8",
+      "title": "StridePro Everyday Sneakers",
+      "category": "Fashion",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
+      "reviews": [
+        {"text":"I walked in these shoes for a full week. The cushioning is comfortable and the size matched the chart, but the laces are shorter than I prefer.","rating":4,"date":"2026-05-30","reviewer":"reviewer-801"},
+        {"text":"Lightweight and easy to wear for errands. The sole has good grip on dry pavement.","rating":4,"date":"2026-06-05","reviewer":"reviewer-802"},
+        {"text":"Best shoes ever!!! So comfortable!!! You must buy these right now!!!","rating":5,"date":"2026-06-05","reviewer":"reviewer-803"},
+        {"text":"The color is accurate and they are comfortable after a short break-in period. Not ideal for long runs.","rating":3,"date":"2026-06-14","reviewer":"reviewer-804"}
+      ]
+    },
+    {
+      "id": "9",
+      "title": "BrewMate Pour-Over Coffee Set",
+      "category": "Kitchen",
+      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+      "reviews": [
+        {"text":"The dripper is easy to rinse and the included scoop is useful. I got a clean cup after adjusting the grind size and pouring slowly.","rating":5,"date":"2026-05-22","reviewer":"reviewer-901"},
+        {"text":"Good starter set with a sturdy glass server. The paper filters are not included, so check the size before ordering.","rating":4,"date":"2026-05-29","reviewer":"reviewer-902"},
+        {"text":"Amazing coffee kit perfect best ever must buy now!!!","rating":5,"date":"2026-05-29","reviewer":"reviewer-903"},
+        {"text":"The handle stays cool and the markings on the server are clear. It makes enough for two small cups.","rating":4,"date":"2026-06-08","reviewer":"reviewer-904"}
+      ]
+    },
+    {
+      "id": "10",
+      "title": "GreenTrail Plant Care Kit",
+      "category": "Garden",
+      "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80",
+      "reviews": [
+        {"text":"The moisture meter helped me stop overwatering my herbs. The small shears are sharp enough for indoor plants and the labels are reusable.","rating":5,"date":"2026-05-15","reviewer":"reviewer-1001"},
+        {"text":"Useful set for a few balcony pots. The spray bottle is small but the tools are comfortable to hold.","rating":4,"date":"2026-05-21","reviewer":"reviewer-1002"},
+        {"text":"Perfect garden kit!!! Best plant product ever!!! Buy now and transform your plants!!!","rating":5,"date":"2026-05-21","reviewer":"reviewer-1003"},
+        {"text":"The tools arrived clean and packed well. I wish the gloves came in more than one size.","rating":4,"date":"2026-06-01","reviewer":"reviewer-1004"}
       ]
     }
   ]

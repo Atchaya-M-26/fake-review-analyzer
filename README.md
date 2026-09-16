@@ -21,6 +21,7 @@ With the API running, open `http://127.0.0.1:8765/demo/`. Select a product to vi
 - Manual review analysis using explainable NLP-style signals: sentiment, exaggerated language, review detail, capitalization, calls to action, and punctuation intensity.
 - Trust score from 0–100 with three outcomes: likely genuine, suspicious, or likely fake.
 - Product URL analysis dashboard with review-level breakdown. It uses products and reviews from the local SampleCart demo store.
+- The demo catalog contains 10 products with product images and up to 25 reviews per product.
 
 ## Important reliability note
 

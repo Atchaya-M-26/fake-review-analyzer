@@ -40,10 +40,10 @@ def analyze_product(url):
     product=next((x for x in STORE['products'] if x['id']==product_id),None)
     if not product: raise ValueError('Demo product not found. Try http://127.0.0.1:8765/demo/products/1 or /2.')
     reviews=[]
-    for idx,item in enumerate(product['reviews']):
+    for idx,item in enumerate(product['reviews'][:25]):
         result=analyze(item['text']); reviews.append({**item,'time':item.get('time',f'10:{10+idx*7:02d} AM'),**result})
     counts={label:sum(1 for x in reviews if x['label']==label) for label in ('Likely genuine','Suspicious','Likely fake')}
-    return {'product':{'id':product['id'],'title':product['title'],'category':product['category']},'source':'SampleCart demo store','reviews':reviews,'reviewsScanned':len(reviews),'genuine':counts['Likely genuine'],'suspicious':counts['Suspicious'],'fake':counts['Likely fake'],'trustScore':round(sum(x['trustScore'] for x in reviews)/len(reviews))}
+    return {'product':{'id':product['id'],'title':product['title'],'category':product['category'],'image':product.get('image','')},'source':'SampleCart demo store','reviews':reviews,'reviewsScanned':len(reviews),'genuine':counts['Likely genuine'],'suspicious':counts['Suspicious'],'fake':counts['Likely fake'],'trustScore':round(sum(x['trustScore'] for x in reviews)/len(reviews))}
 class Handler(BaseHTTPRequestHandler):
     def send_json(self,status,value):
         body=json.dumps(value).encode(); self.send_response(status); self.send_header('Content-Type','application/json'); self.send_header('Access-Control-Allow-Origin','*'); self.send_header('Access-Control-Allow-Headers','Content-Type'); self.end_headers(); self.wfile.write(body)

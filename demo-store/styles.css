@@ -12,7 +12,9 @@ h2 { margin: 8px 0; }
 p { color: #66756f; line-height: 1.6; }
 .product-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
 .product-card, .review-card { background: white; border: 1px solid #dce6df; border-radius: 14px; box-shadow: 0 8px 24px #173d3510; padding: 20px; }
-.product-art { align-items: center; background: #d9f38c; border-radius: 10px; color: #173d35; display: flex; font-size: 38px; font-weight: 800; height: 100px; justify-content: center; }
+.product-image, .product-hero-image { background: #d9f38c; border-radius: 10px; display: block; object-fit: cover; width: 100%; }
+.product-image { height: 170px; }
+.product-hero-image { height: 280px; margin: 24px 0; max-width: 560px; }
 .button { background: #173d35; border-radius: 7px; color: white; display: inline-block; font-weight: 700; padding: 10px 14px; text-decoration: none; }
 .product-page { max-width: 800px; }
 .back-link { color: #397567; text-decoration: none; }
