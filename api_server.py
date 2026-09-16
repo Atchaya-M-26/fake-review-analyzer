@@ -11,6 +11,35 @@ MODEL=np.load(ROOT/'ml/artifacts/review_risk_model.npz')
 WEIGHTS=MODEL['weights']; BIAS=float(MODEL['bias'][0]); DIM=int(MODEL['dimensions'][0])
 TOKEN_RE=re.compile(r"[a-z0-9']+")
 STORE=json.loads((ROOT/'demo_store.json').read_text(encoding='utf-8'))
+REVIEW_TEMPLATES=[
+    'The product arrived on time and matched the description. I have used it several times and it performs reliably.',
+    'The quality is reasonable for the price. The design is practical, although there are a few small areas that could be improved.',
+    'I have been using this for over a week and it has fit smoothly into my daily routine. Setup was straightforward.',
+    'The materials feel solid and the instructions were clear. It is useful, but I would compare the size carefully before ordering.',
+    'This works as expected for normal use. The finish is good and cleaning or storing it has been simple.',
+    'I like the overall design and have not noticed any major problems. Delivery packaging also kept the product protected.',
+    'The product is comfortable to use and the controls are easy to understand. Performance has been consistent so far.',
+    'It is a decent option for everyday use. A small improvement to the accessories would make the package more complete.',
+    'The item looks like the photos and feels well made. I would recommend it for someone with similar needs.',
+    'After several uses, the product remains functional and easy to handle. The value depends on the current price.',
+    'The size was accurate and the product was ready to use quickly. It has been dependable during normal use.',
+    'I noticed a minor issue with the finish, but it does not affect the main function. Overall, it is acceptable.',
+    'The instructions could include more detail, though the product itself was not difficult to operate.',
+    'This is useful for my home and takes up less space than expected. The build quality feels average but durable.',
+    'I tested the product in different situations and the results were generally good. It is not perfect, but it is practical.',
+    'The product has been convenient for regular use and the basic features work properly. It offers fair value for a demo purchase.',
+    'I am satisfied with the function and appearance. There was no complicated setup, and it has handled my usual tasks well.'
+]
+for product in STORE['products']:
+    seed_count=len(product['reviews'])
+    for offset, template in enumerate(REVIEW_TEMPLATES):
+        if len(product['reviews']) >= 20: break
+        product['reviews'].append({
+            'text': template,
+            'rating': 3 + ((offset + int(product['id'])) % 3 == 2),
+            'date': f"2026-{5 + ((offset + int(product['id'])) % 3):02d}-{10 + offset:02d}",
+            'reviewer': f"reviewer-{product['id']}01{offset + seed_count}"
+        })
 def index(token): return int.from_bytes(hashlib.md5(token.encode()).digest()[:4],'little')%DIM
 def probability(text):
     tokens=TOKEN_RE.findall(text.lower()); features=tokens+[f'{a}_{b}' for a,b in zip(tokens,tokens[1:])]
