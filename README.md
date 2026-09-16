@@ -12,11 +12,15 @@ From this project folder, start the local prediction service:
 
 Then refresh `index.html`. Manual review analysis calls `http://127.0.0.1:8765/api/analyze-review`; if the API is offline, the browser uses its local fallback.
 
+## Browse the demo product store
+
+With the API running, open `http://127.0.0.1:8765/demo/`. Select a product to view its sample reviews, then copy the product URL into the Product URL analyzer. The catalog is controlled sample data and does not scrape Amazon, Myntra, or any other marketplace.
+
 ## What is included
 
 - Manual review analysis using explainable NLP-style signals: sentiment, exaggerated language, review detail, capitalization, calls to action, and punctuation intensity.
 - Trust score from 0–100 with three outcomes: likely genuine, suspicious, or likely fake.
-- Product URL analysis dashboard with review-level breakdown. It uses sample reviews in this browser-only prototype.
+- Product URL analysis dashboard with review-level breakdown. It uses products and reviews from the local SampleCart demo store.
 
 ## Important reliability note
 
