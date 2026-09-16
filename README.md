@@ -1,4 +1,4 @@
-# ReviewLens — Fake Online Review Analyzer
+# Fake Online Review Analyzer
 
 Open `index.html` in a browser to run the MVP. No build step is required.
 
