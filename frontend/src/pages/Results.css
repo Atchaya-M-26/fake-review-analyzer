@@ -1,0 +1,262 @@
+.results {
+  min-height: 100%;
+  padding: 4px 0 20px;
+}
+
+.results-container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.results-loading {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  color: rgba(46, 50, 67, 0.7);
+}
+
+.save-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.trust-score-card,
+.analysis-chart-card,
+.flags-card,
+.details-card,
+.explanation-card {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.trust-score-card {
+  position: relative;
+}
+
+.results-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 20px;
+  align-items: stretch;
+  margin-bottom: 20px;
+}
+
+.trust-score-card h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.score-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.score-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.score-value {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.score-info {
+  flex: 1;
+}
+
+.score-info .classification {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px 0;
+  text-transform: capitalize;
+}
+
+.score-info .description {
+  color: #666;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.analysis-chart-card {
+  min-width: 0;
+}
+
+.chart-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.chart-heading h2 {
+  color: #333;
+  margin: 4px 0 0;
+  font-size: 1.35rem;
+}
+
+.chart-kicker {
+  color: #7c3aed;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.chart-scale {
+  background: #f1ebff;
+  border-radius: 999px;
+  color: #6d28d9;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.analysis-chart {
+  height: 250px;
+  position: relative;
+}
+
+.flags-card h3,
+.details-card h3,
+.explanation-card h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.flags-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.flag-item {
+  padding: 12px;
+  background-color: #fef3f3;
+  border-left: 4px solid #e74c3c;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+}
+
+.flag-icon {
+  font-size: 1.2rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.detail-item {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.detail-item label {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.detail-item value {
+  display: block;
+  font-size: 1.5rem;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.explanation-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 15px 0;
+}
+
+.explanation-card ul {
+  list-style-position: inside;
+  color: #666;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.explanation-card li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+  .results-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .score-display {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .score-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .score-value {
+    font-size: 2rem;
+  }
+}

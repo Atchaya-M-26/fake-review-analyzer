@@ -1,0 +1,22 @@
+{
+  "best_model": "naive_bayes",
+  "results": {
+    "random_forest": {
+      "accuracy": 0.5622,
+      "f1": 0.5159,
+      "report": {}
+    },
+    "naive_bayes": {
+      "accuracy": 0.76,
+      "f1": 0.7448,
+      "report": {}
+    }
+  },
+  "labels": [
+    "genuine",
+    "suspicious",
+    "fake"
+  ],
+  "trained_samples": 46,
+  "training_source": "C:\\Users\\Anjali\\OneDrive\\Desktop\\fake_review\\ml-service\\data\\training_reviews.csv"
+}
